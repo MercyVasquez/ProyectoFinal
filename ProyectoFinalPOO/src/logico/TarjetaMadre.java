@@ -2,61 +2,61 @@ package logico;
 
 import java.util.ArrayList;
 
-public class TarjetaMadre {
-	private String Marca;
-	private String Modelo;
-	private String TipoConector;
-	private String TipoRam;
-	private ArrayList<DiscoDuro> DiscosAceptados;
+public class TarjetaMadre extends Componente{
+	private String marca;
+	private String modelo;
+	private String tipoConector;
+	private String tipoRam;
+	private String conexionAceptada;
 	
-	public TarjetaMadre(String marca, String modelo, String tipoConector, String tipoRam,
-			ArrayList<DiscoDuro> discosAceptados) { /*Revisar si se puede poner el arraylist adentro*/
-		super();
-		Marca = marca;
-		Modelo = modelo;
-		TipoConector = tipoConector;
-		TipoRam = tipoRam;
-		DiscosAceptados = discosAceptados;
+	public TarjetaMadre(double precio, int cantidadExistente, String numeroSerie, String marca, String modelo,
+			String tipoConector, String tipoRam, String conexionAceptada) {
+		super(precio, cantidadExistente, numeroSerie);
+		this.marca = marca;
+		this.modelo = modelo;
+		this.tipoConector = tipoConector;
+		this.tipoRam = tipoRam;
+		this.conexionAceptada = conexionAceptada;
 	}
 
 	public String getMarca() {
-		return Marca;
+		return marca;
 	}
 
 	public void setMarca(String marca) {
-		Marca = marca;
+		this.marca = marca;
 	}
 
 	public String getModelo() {
-		return Modelo;
+		return modelo;
 	}
 
 	public void setModelo(String modelo) {
-		Modelo = modelo;
+		this.modelo = modelo;
 	}
 
 	public String getTipoConector() {
-		return TipoConector;
+		return tipoConector;
 	}
 
 	public void setTipoConector(String tipoConector) {
-		TipoConector = tipoConector;
+		this.tipoConector = tipoConector;
 	}
 
 	public String getTipoRam() {
-		return TipoRam;
+		return tipoRam;
 	}
 
 	public void setTipoRam(String tipoRam) {
-		TipoRam = tipoRam;
+		this.tipoRam = tipoRam;
 	}
 
-	public ArrayList<DiscoDuro> getDiscosAceptados() {
-		return DiscosAceptados;
+	public String getConexionAceptada() {
+		return conexionAceptada;
 	}
 
-	public void setDiscosAceptados(ArrayList<DiscoDuro> discosAceptados) {
-		DiscosAceptados = discosAceptados;
+	public void setConexionAceptada(String conexionAceptada) {
+		this.conexionAceptada = conexionAceptada;
 	}
 	
 	
