@@ -1,26 +1,17 @@
 package logico;
 
 public class DiscoDuro extends Componente{
-	private String marca;
+	
 	private String modelo;
 	private String capacidad;
 	private String tipoConexion;
-
+	
 	public DiscoDuro(double precio, int cantidadExistente, String numeroSerie, String marca, String modelo,
 			String capacidad, String tipoConexion) {
-		super(precio, cantidadExistente, numeroSerie);
-		this.marca = marca;
+		super(precio, cantidadExistente, numeroSerie, marca);
 		this.modelo = modelo;
 		this.capacidad = capacidad;
 		this.tipoConexion = tipoConexion;
-	}
-
-	public String getMarca() {
-		return marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
 	}
 
 	public String getModelo() {
@@ -46,4 +37,6 @@ public class DiscoDuro extends Componente{
 	public void setTipoConexion(String tipoConexion) {
 		this.tipoConexion = tipoConexion;
 	}
+
+
 }

@@ -1,10 +1,13 @@
 package logico;
 
+import java.util.ArrayList;
+
 public class Cliente {
 	private String id;
 	private String nombre;
 	private String direccion;
 	private String telefono;
+	private ArrayList<Factura> factura;
 	
 	public Cliente(String id, String nombre, String direccion, String telefono) {
 		super();
@@ -12,6 +15,8 @@ public class Cliente {
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
+		factura = new ArrayList<Factura>();
+		
 	}
 
 	public String getId() {
@@ -44,5 +49,13 @@ public class Cliente {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public ArrayList<Factura> getFactura() {
+		return factura;
+	}
+
+	public void setFactura(ArrayList<Factura> factura) {
+		this.factura = factura;
 	}
 }

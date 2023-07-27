@@ -1,28 +1,19 @@
 package logico;
 
 public class TarjetaMadre extends Componente{
-	private String marca;
+
 	private String modelo;
-	private String tipoConector;
+	private String tipoConexion;
 	private String tipoRam;
 	private String conexionAceptada;
 	
 	public TarjetaMadre(double precio, int cantidadExistente, String numeroSerie, String marca, String modelo,
-			String tipoConector, String tipoRam, String conexionAceptada) {
-		super(precio, cantidadExistente, numeroSerie);
-		this.marca = marca;
+			String tipoConexion, String tipoRam, String conexionAceptada) {
+		super(precio, cantidadExistente, numeroSerie, marca);
 		this.modelo = modelo;
-		this.tipoConector = tipoConector;
+		this.tipoConexion = tipoConexion;
 		this.tipoRam = tipoRam;
 		this.conexionAceptada = conexionAceptada;
-	}
-
-	public String getMarca() {
-		return marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
 	}
 
 	public String getModelo() {
@@ -33,12 +24,12 @@ public class TarjetaMadre extends Componente{
 		this.modelo = modelo;
 	}
 
-	public String getTipoConector() {
-		return tipoConector;
+	public String getTipoConexion() {
+		return tipoConexion;
 	}
 
-	public void setTipoConector(String tipoConector) {
-		this.tipoConector = tipoConector;
+	public void setTipoConexion(String tipoConexion) {
+		this.tipoConexion = tipoConexion;
 	}
 
 	public String getTipoRam() {
@@ -56,6 +47,5 @@ public class TarjetaMadre extends Componente{
 	public void setConexionAceptada(String conexionAceptada) {
 		this.conexionAceptada = conexionAceptada;
 	}
-	
 	
 }
