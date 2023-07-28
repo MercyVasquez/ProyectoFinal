@@ -6,9 +6,9 @@ public class Microprocesador extends Componente{
 	private String tipoConexion;
 	private String velocidadProcesamiento;
 	
-	public Microprocesador(double precio, int cantidadExistente, String numeroSerie, String marca, String modelo,
+	public Microprocesador(String idcomp, double precio, int cantidadExistente, String numeroSerie, String marca, String modelo,
 			String tipoConexion, String velocidadProcesamiento) {
-		super(precio, cantidadExistente, numeroSerie, marca);
+		super(idcomp, precio, cantidadExistente, numeroSerie, marca);
 		this.modelo = modelo;
 		this.tipoConexion = tipoConexion;
 		this.velocidadProcesamiento = velocidadProcesamiento;

@@ -1,17 +1,26 @@
 package logico;
 
 public class Componente {
+	protected String idcomp;
 	protected double precio;
 	protected int cantidadExistente;
 	protected String numeroSerie;
 	protected String marca;
 	
-	public Componente(double precio, int cantidadExistente, String numeroSerie, String marca) {
+	public Componente(String idcomp,double precio, int cantidadExistente, String numeroSerie, String marca) {
 		super();
+		this.idcomp = idcomp;
 		this.precio = precio;
 		this.cantidadExistente = cantidadExistente;
 		this.numeroSerie = numeroSerie;
 		this.marca = marca;
+	}
+	public String getIdcomp() {
+		return idcomp;
+	}
+
+	public void setidcomp(String idcomp) {
+		this.idcomp = idcomp;
 	}
 
 	public double getPrecio() {

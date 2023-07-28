@@ -41,7 +41,7 @@ public class Combo {
         if (indice >= 0 && indice < componentes.size()) {
             componentes.remove(indice);
         } else {
-            System.out.println("Índice inválido. No se encontró el componente.");
+            System.out.println("Indice invalido. No se encontrado el componente.");
         }
     }
 
@@ -66,7 +66,7 @@ public class Combo {
         infoCombo.append("ID del Combo: ").append(idCombo).append("\n");
         infoCombo.append("Componentes del Combo:\n");
         for (Componente componente : componentes) {
-            infoCombo.append("- ").append(componente.getTipo()).append(", Modelo: ").append(componente.getModelo())
+            infoCombo.append("- ").append(componente.getIdcomp()).append(", Marca: ").append(componente.getMarca())
                     .append(", Precio: ").append(componente.getPrecio()).append("\n");
         }
         infoCombo.append("Precio Total del Combo: ").append(obtenerPrecioTotal());

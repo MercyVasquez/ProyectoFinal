@@ -7,9 +7,9 @@ public class TarjetaMadre extends Componente{
 	private String tipoRam;
 	private String conexionAceptada;
 	
-	public TarjetaMadre(double precio, int cantidadExistente, String numeroSerie, String marca, String modelo,
+	public TarjetaMadre(String idcomp, double precio, int cantidadExistente, String numeroSerie, String marca, String modelo,
 			String tipoConexion, String tipoRam, String conexionAceptada) {
-		super(precio, cantidadExistente, numeroSerie, marca);
+		super(idcomp, precio, cantidadExistente, numeroSerie, marca);
 		this.modelo = modelo;
 		this.tipoConexion = tipoConexion;
 		this.tipoRam = tipoRam;
