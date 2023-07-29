@@ -34,7 +34,9 @@ public class Combo {
 
 
 	public void agregarComponente(Componente componente) {
-        componentes.add(componente);
+		if(componente.revisarExistencia() == true) {
+	        componentes.add(componente);
+		}
     }
 
     public void eliminarComponente(int indice) {
@@ -61,6 +63,7 @@ public class Combo {
         return componentes.size();
     }
 
+
     public String obtenerInformacionCombo() {
         StringBuilder infoCombo = new StringBuilder();
         infoCombo.append("ID del Combo: ").append(idCombo).append("\n");
@@ -72,6 +75,9 @@ public class Combo {
         infoCombo.append("Precio Total del Combo: ").append(obtenerPrecioTotal());
         return infoCombo.toString();
     }
-
+    
+	public boolean revisarExistenciaCombo(String IDCombo) {
+		return (idCombo == IDCombo) ? true : false;
+	}
   
 }

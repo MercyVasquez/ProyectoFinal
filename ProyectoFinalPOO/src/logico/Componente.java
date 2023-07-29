@@ -54,4 +54,10 @@ public class Componente {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+	public boolean revisarExistencia() {
+		return (cantidadExistente>0) ? true : false; 
+	}
+	public void disminuirCantidad() {
+		cantidadExistente--;
+	}
 }
