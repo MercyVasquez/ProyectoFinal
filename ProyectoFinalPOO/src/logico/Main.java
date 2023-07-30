@@ -33,6 +33,16 @@ public class Main {
         factura1.agregarComboFac(combo1, 2);; //150 + 18%
 
         tienda.agregarFactura(factura1);
+        
+
+        
+        Componente masVendido = tienda.componenteMasVendido();
+
+        if (masVendido != null) {
+            System.out.println("El componente más vendido es: " + masVendido.getIdcomp());
+        } else {
+            System.out.println("No hay componentes vendidos aún.");
+        }
 
         System.out.println(combo1.obtenerInformacionCombo());
 

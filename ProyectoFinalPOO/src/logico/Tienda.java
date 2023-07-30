@@ -7,6 +7,7 @@ public class Tienda {
     private ArrayList<Componente> componentes;
     private ArrayList<Combo> misCombos;
     private ArrayList<Factura> factura;
+	private static int generaridcli=1;
     public static int cantComp;
     public static int cantCombo;
     public static int cantClientes;
@@ -75,12 +76,20 @@ public class Tienda {
 	public static void setCantClientes(int cantClientes) {
 		Tienda.cantClientes = cantClientes;
 	}
+	public static int getGgeneraridcli() {
+		return generaridcli;
+	}
+
+	public static void setGeneraridcli(int generaridcli) {
+		Tienda.generaridcli = generaridcli;
+	}
 	
 	
 	//metodos
 	public void agregarCliente(Cliente cliente) {
         misclientes.add(cliente);
         cantClientes++;
+        generaridcli++;
     }
 
     public void agregarFactura(Factura nuevaFactura) {
