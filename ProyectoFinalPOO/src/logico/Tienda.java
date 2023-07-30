@@ -11,6 +11,7 @@ public class Tienda {
     public static int cantComp;
     public static int cantCombo;
     public static int cantClientes;
+    public static Tienda tienda = null;
 
     public Tienda() {
         misclientes = new ArrayList<>();
@@ -126,41 +127,61 @@ public class Tienda {
         componentes.add(nuevoComponente);
         cantComp++;
     }
-    
-	private int indexBycodigo(String codigo) {
-		Componente[] micomp = new Componente[50];
-		boolean encontrado = false;
-		int i = 0;
-		int index = -1;
-		while (!encontrado && i< cantComp) {
-			if(micomp[i].getIdcomp().equalsIgnoreCase(codigo)){
-				encontrado = true;
-				index = i;
-				
-			}
-			i++;
-		}
-		return index;
-	}
-	public void eliminarComponente(String identificador) {
-		Componente[] micomp = new Componente[50];
-		int index = -1;
-		int i= 0;
-		if(indexBycodigo(identificador)>-1){
-			index = indexBycodigo(identificador);
-			i = index;
-				while(i<cantComp-1){
-				  micomp[i]=micomp[i+1];
-				  i++;
-				}
-			cantComp--;	
-		}
+    private int indexBycodigo(String codigo) {
+        componentes = Tienda.getInstance().getComponentes();
+        for (int i = 0; i < componentes.size(); i++) {
+            Componente comp = componentes.get(i);
+            if (comp.getIdcomp().equalsIgnoreCase(codigo)) {
+                return i;
+            }
+        }
+        return -1; 
+    }
 
-	}
+    private int indexBycodigoCli(String codigo) {
+        misclientes = Tienda.getInstance().getMisclientes();
+        for (int i = 0; i < misclientes.size(); i++) {
+            Cliente cli = misclientes.get(i);
+            if (cli.getId().equalsIgnoreCase(codigo)) {
+                return i;
+            }
+        }
+        return -1; 
+    }
+
+    public void eliminarComponente(String identificador) {
+        componentes = Tienda.getInstance().getComponentes();
+        int index = indexBycodigo(identificador);
+        if (index != -1) {
+            componentes.remove(index);
+            cantComp--;
+        }
+    }
 	public void modificarComponente(Componente miscomp) {
 		Componente[] micomp = new Componente[50];
 		int index = indexBycodigo(miscomp.getIdcomp());
 		micomp[index] = miscomp;
 		
 	}
+
+	public void modificarCliente(Cliente cliente) {
+	    misclientes = Tienda.getInstance().getMisclientes();
+	    int index = indexBycodigoCli(cliente.getId());
+	    if (index != -1) {
+	        misclientes.set(index, cliente);
+	    }
+	}
+	public void eliminarCliente(String identificador) {
+	    misclientes = Tienda.getInstance().getMisclientes();
+	    int index = indexBycodigoCli(identificador);
+	    if (index != -1) {
+	        misclientes.remove(index);
+	        cantClientes--;
+	    }
+	}
+	public static Tienda  getInstance() {
+        if(tienda == null);
+        tienda = new Tienda();
+        return tienda;
+    }
 }
