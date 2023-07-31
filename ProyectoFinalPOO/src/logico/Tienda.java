@@ -8,6 +8,8 @@ public class Tienda {
     private ArrayList<Combo> misCombos;
     private ArrayList<Factura> factura;
 	private static int generarcodcli=1;
+	private static int generarcodcomp=1;
+	private static int generarcodcomb=1;
     public static int cantComp;
     public static int cantCombo;
     public static int cantClientes;
@@ -81,10 +83,23 @@ public class Tienda {
 		return generarcodcli;
 	}
 
-	public static void setGenerarcodcli(int generaridcli) {
-		Tienda.generarcodcli = generaridcli;
+	public static void setGenerarcodcli(int generarcodcli) {
+		Tienda.generarcodcli = generarcodcli;
 	}
-	
+	public static int getGenerarcodcomp() {
+		return generarcodcomp;
+	}
+
+	public static void setGenerarcodcomp(int generarcodcomp) {
+		Tienda.generarcodcomp = generarcodcomp;
+	}
+	public static int getGenerarcodcomb() {
+		return generarcodcomb;
+	}
+
+	public static void setGenerarcodcomb(int generarcodcomb) {
+		Tienda.generarcodcomb = generarcodcomb;
+	}
 	
 	//metodos
 	public void agregarCliente(Cliente cliente) {
@@ -99,6 +114,7 @@ public class Tienda {
 
     public void agregarCombo(Combo nuevoCombo) {
         misCombos.add(nuevoCombo);
+        generarcodcomb++;
         cantCombo++;
     }
 
@@ -126,6 +142,7 @@ public class Tienda {
     public void agregarComponente(Componente nuevoComponente) {
         componentes.add(nuevoComponente);
         cantComp++;
+        generarcodcomp++;
     }
     private int indexBycodigo(String codigo) {
         componentes = Tienda.getInstance().getComponentes();
@@ -179,8 +196,21 @@ public class Tienda {
 	        cantClientes--;
 	    }
 	}
+	public Cliente buscarCliente(String id) {
+	    Cliente aux = null;
+	    boolean encontrado = false;
+	    int i = 0;
+	    while (!encontrado && i < misclientes.size()) {
+	        if (misclientes.get(i).getId().equalsIgnoreCase(id)) {
+	            aux = misclientes.get(i);
+	            encontrado = true;
+	        }
+	        i++;
+	    }
+	    return aux;
+	}
 	public static Tienda  getInstance() {
-        if(tienda == null);
+        if(tienda == null)
         tienda = new Tienda();
         return tienda;
     }

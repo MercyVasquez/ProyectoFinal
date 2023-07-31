@@ -11,7 +11,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-import logico.Cliente;
+import logico.Componente;
+import logico.DiscoDuro;
 import logico.Tienda;
 
 import javax.swing.JScrollPane;
@@ -24,7 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class ListarCliente extends JDialog {
+public class ListarDiscoDuro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
@@ -43,10 +44,10 @@ public class ListarCliente extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListarCliente(Tienda tienda) {
+	public ListarDiscoDuro(Tienda tienda) {
 		this.mitienda = tienda;
 		setResizable(false);
-		setTitle("Listado de clientes");
+		setTitle("Listado de discos duros");
 		setBounds(100, 100, 901, 524);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -65,7 +66,7 @@ public class ListarCliente extends JDialog {
 				{
 					
 					model = new DefaultTableModel();
-					String[] header = {"Código","Nombre","Direccion","Telefono"};
+					String[] header = {"Código","Precio","Existencia","Numero serie","Marca","Modelo","Capacidad","Tipo Conexion"};
 					model.setColumnIdentifiers(header);
 					table = new JTable(model);
 					table.addMouseListener(new MouseAdapter() {
@@ -94,13 +95,7 @@ public class ListarCliente extends JDialog {
 			{
 				btnmodificar = new JButton("Modificar");
 				btnmodificar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if(!id.equals("")){
-							   Cliente aux = tienda.buscarCliente(id);
-							   RegistrarCliente regcli = new RegistrarCliente(tienda,aux);
-							   regcli.setModal(true);
-							   regcli.setVisible(true);
-						}	
+					public void actionPerformed(ActionEvent e) {	
 					}
 				});
 				btnmodificar.setEnabled(false);
@@ -112,17 +107,6 @@ public class ListarCliente extends JDialog {
 				btneliminar = new JButton("Eliminar");
 				btneliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(!id.equals("")){
-							   Cliente aux = tienda.buscarCliente(id);
-							   int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el Cliente: " + aux.getNombre(),"Información",JOptionPane.WARNING_MESSAGE);
-								  if(option == JOptionPane.OK_OPTION){
-									tienda.eliminarCliente(id);
-									loadCliente(0);
-									btneliminar.setEnabled(false);
-									btnmodificar.setEnabled(false);	
-								  }
-							 						 
-							}
 					}
 				});
 				btneliminar.setEnabled(false);
@@ -139,21 +123,26 @@ public class ListarCliente extends JDialog {
 				buttonPane.add(btnCancelar);
 			}
 		}
-		loadCliente(0);
+		loadDiscoD(0);
 	}
 
-	public static void loadCliente(int index) {
+	public static void loadDiscoD(int index) {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
 		if(index == 0){
-			for (Cliente cliente : Tienda.getInstance().getMisclientes()) {
-				if(cliente != null){	
-					row[0] = cliente.getId();
-					row[1] = cliente.getNombre();
-					row[2] = cliente.getTelefono();
-					row[3] = cliente.getDireccion();
-					model.addRow(row);
-				}
+			for (Componente comp : Tienda.getInstance().getComponentes()) {
+			    if (comp instanceof DiscoDuro) {
+			        DiscoDuro discoDuro = (DiscoDuro) comp;
+			        row[0] = discoDuro.getIdcomp();
+			        row[1] = discoDuro.getPrecio();
+			        row[2] = discoDuro.getCantidadExistente();
+			        row[3] = discoDuro.getNumeroSerie();
+			        row[4] = discoDuro.getMarca();
+			        row[5] = discoDuro.getModelo();
+			        row[6] = discoDuro.getCapacidad();
+			        row[7] = discoDuro.getTipoConexion();
+			        model.addRow(row);
+			    }
 			}
 		}
 	}

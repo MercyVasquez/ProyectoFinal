@@ -50,7 +50,7 @@ public class Principal extends JFrame {
 	 */
 	public Principal(Tienda tienda) {
 		this.mitienda = tienda;
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\FISM\\Downloads\\Black And White Modern Vintage Retro Brand Logo.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/media/icon.png")));
 		setTitle("Tienda de componentes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 902, 524);
@@ -65,13 +65,93 @@ public class Principal extends JFrame {
 		Componentemn.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
 		menuBar.add(Componentemn);
 		
-		JMenuItem Listarcomp = new JMenuItem("Listar");
-		Listarcomp.setFont(new Font("Segoe UI", Font.PLAIN, 17));
-		Componentemn.add(Listarcomp);
+		JMenuItem ListarDiscoD = new JMenuItem("Listar Disco Duro");
+		ListarDiscoD.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarDiscoDuro listardd = new ListarDiscoDuro(tienda);
+				listardd.setModal(true);
+				listardd.setVisible(true);
+			}
+		});
+		ListarDiscoD.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		Componentemn.add(ListarDiscoD);
 		
-		JMenuItem Registrarcomp = new JMenuItem("Registrar");
-		Registrarcomp.setFont(new Font("Segoe UI", Font.PLAIN, 17));
-		Componentemn.add(Registrarcomp);
+		JMenuItem RegistrarDD = new JMenuItem("Registrar Disco Duro");
+		RegistrarDD.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarDiscoDuro regdd = new RegistrarDiscoDuro(tienda, null);
+				regdd.setModal(true);
+				regdd.setVisible(true);
+			}
+		});
+		RegistrarDD.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		Componentemn.add(RegistrarDD);
+		
+		JMenuItem listarRam = new JMenuItem("Listar Memoria RAM");
+		listarRam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarRAM listram = new ListarRAM(tienda);
+				listram.setModal(true);
+				listram.setVisible(true);
+			}
+		});
+		listarRam.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		Componentemn.add(listarRam);
+		
+		JMenuItem registrarRam = new JMenuItem("Registrar Memoria RAM");
+		registrarRam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarRAM regram = new RegistrarRAM(tienda, null);
+				regram.setModal(true);
+				regram.setVisible(true);
+			}
+		});
+		registrarRam.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		Componentemn.add(registrarRam);
+		
+		JMenuItem lisMicroprocesador = new JMenuItem("Listar Microprocesador");
+		lisMicroprocesador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarMicroprocesador listmicrop = new ListarMicroprocesador(tienda);
+				listmicrop.setModal(true);
+				listmicrop.setVisible(true);
+			}
+		});
+		lisMicroprocesador.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		Componentemn.add(lisMicroprocesador);
+		
+		JMenuItem regMicroprocesador = new JMenuItem("Registrar Microprocesador");
+		regMicroprocesador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarMicroprocesador regmc = new RegistrarMicroprocesador(tienda, null);
+				regmc.setModal(true);
+				regmc.setVisible(true);
+			}
+		});
+		regMicroprocesador.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		Componentemn.add(regMicroprocesador);
+		
+		JMenuItem lisTarjetaMadre = new JMenuItem("Listar Tarjeta Madre");
+		lisTarjetaMadre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarMotherboard mb = new ListarMotherboard(tienda);
+				mb.setModal(true);
+				mb.setVisible(true);
+			}
+		});
+		lisTarjetaMadre.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		Componentemn.add(lisTarjetaMadre);
+		
+		JMenuItem mntmRegistrarTarjetaMadre = new JMenuItem("Registrar Tarjeta Madre");
+		mntmRegistrarTarjetaMadre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarMotherboard mb = new RegistrarMotherboard(tienda,null);
+				mb.setModal(true);
+				mb.setVisible(true);
+			}
+		});
+		mntmRegistrarTarjetaMadre.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		Componentemn.add(mntmRegistrarTarjetaMadre);
 		
 		JMenu Combomn = new JMenu("Combo");
 		Combomn.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 17));
@@ -144,8 +224,8 @@ public class Principal extends JFrame {
 		panel_2.setLayout(null);
 		
 		JLabel Icono = new JLabel("");
-		Icono.setIcon(new ImageIcon("C:\\Users\\FISM\\Downloads\\Black And White Modern Vintage Retro Brand Logo.png"));
-		Icono.setBounds(176, 25, 414, 374);
+		Icono.setIcon(new ImageIcon(Principal.class.getResource("/media/icon.png")));
+		Icono.setBounds(439, 13, 414, 374);
 		panel_2.add(Icono);
 	}
 }

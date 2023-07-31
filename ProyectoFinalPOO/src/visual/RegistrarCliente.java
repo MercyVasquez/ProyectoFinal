@@ -36,6 +36,7 @@ public class RegistrarCliente extends JDialog {
 	private Cliente micliente = null;
 	private JTextArea direcciontxt;
 
+
 	/**
 	 * Launch the application.
 	 */
@@ -67,7 +68,7 @@ public class RegistrarCliente extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblNewLabel = new JLabel("Registrar cliente");
-			lblNewLabel.setIcon(new ImageIcon("C:\\Users\\FISM\\Downloads\\Black And White Modern Vintage Retro Brand Logo.png"));
+			lblNewLabel.setIcon(new ImageIcon(RegistrarCliente.class.getResource("/media/icon.png")));
 			lblNewLabel.setBounds(426, 0, 469, 413);
 			panel.add(lblNewLabel);
 			
@@ -130,7 +131,7 @@ public class RegistrarCliente extends JDialog {
                     public void actionPerformed(ActionEvent e) {
                         if(micliente==null){
                         Cliente cli = new Cliente(codigotxt.getText(), nombretxt.getText(),direcciontxt.getText(),telefonotxt.getText());
-                        Tienda.getInstance().agregarCliente(cli);;
+                        Tienda.getInstance().agregarCliente(cli);
                         JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
                         Clean();
                         }else{
@@ -138,7 +139,7 @@ public class RegistrarCliente extends JDialog {
                             micliente.setDireccion(direcciontxt.getText());
                             micliente.setTelefono(telefonotxt.getText());
                             mitienda.modificarCliente(micliente);;
-                            ListarCliente.loadCliente();
+                            ListarCliente.loadCliente(0);
                             dispose();
                         }
                     }

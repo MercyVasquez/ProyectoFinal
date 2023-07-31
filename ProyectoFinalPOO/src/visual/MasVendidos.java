@@ -66,7 +66,7 @@ public class MasVendidos extends JDialog {
 		}
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Mercy Almanzar\\Downloads\\Black_And_White_Modern_Vintage_Retro_Brand_Logo.png"));
+		lblNewLabel.setIcon(new ImageIcon(MasVendidos.class.getResource("/media/icon.png")));
 		lblNewLabel.setFont(new Font("Book Antiqua", Font.BOLD, 26));
 		lblNewLabel.setBounds(384, 0, 511, 454);
 		contentPanel.add(lblNewLabel);
