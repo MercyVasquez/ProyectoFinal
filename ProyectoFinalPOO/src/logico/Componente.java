@@ -60,4 +60,8 @@ public class Componente {
 	public void disminuirCantidad() {
 		cantidadExistente--;
 	}
+    @Override
+    public String toString() {
+        return getIdcomp(); // Devuelve el código del componente como representación en el combo box.
+    }
 }

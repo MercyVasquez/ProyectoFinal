@@ -122,6 +122,8 @@ public class RegistrarCliente extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
                 JButton btnaceptar = new JButton("");
+                btnaceptar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
+                btnaceptar.setBackground(SystemColor.control);
                 if(micliente==null){
                     btnaceptar.setText("Registrar");
                 }else{
@@ -152,6 +154,8 @@ public class RegistrarCliente extends JDialog {
             }
 			{
 				cancelarbtn = new JButton("Cancelar");
+				cancelarbtn.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
+				cancelarbtn.setBackground(SystemColor.control);
 				cancelarbtn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

@@ -23,6 +23,8 @@ import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class ListarCliente extends JDialog {
 
@@ -93,6 +95,8 @@ public class ListarCliente extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnmodificar = new JButton("Modificar");
+				btnmodificar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
+				btnmodificar.setBackground(SystemColor.control);
 				btnmodificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(!id.equals("")){
@@ -110,6 +114,8 @@ public class ListarCliente extends JDialog {
 			}
 			{
 				btneliminar = new JButton("Eliminar");
+				btneliminar.setBackground(SystemColor.control);
+				btneliminar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
 				btneliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(!id.equals("")){
@@ -130,6 +136,8 @@ public class ListarCliente extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
+				btnCancelar.setBackground(SystemColor.control);
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

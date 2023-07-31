@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Insets;
 import java.awt.Font;
+import javax.swing.JTextField;
 
 
 public class Principal extends JFrame {
@@ -158,10 +159,24 @@ public class Principal extends JFrame {
 		menuBar.add(Combomn);
 		
 		JMenuItem Listarcomb = new JMenuItem("Listar");
+		Listarcomb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarCombo comb = new ListarCombo();
+				comb.setModal(true);
+				comb.setVisible(true);
+			}
+		});
 		Listarcomb.setFont(new Font("Segoe UI", Font.PLAIN, 17));
 		Combomn.add(Listarcomb);
 		
 		JMenuItem Registrarcomb = new JMenuItem("Registrar");
+		Registrarcomb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarCombo regcomb = new RegistrarCombo();
+				regcomb.setModal(true);
+				regcomb.setVisible(true);
+			}
+		});
 		Registrarcomb.setFont(new Font("Segoe UI", Font.PLAIN, 17));
 		Combomn.add(Registrarcomb);
 		
@@ -201,6 +216,13 @@ public class Principal extends JFrame {
 		Ventamn.add(masvendido);
 		
 		JMenuItem facturar = new JMenuItem("Mas vendidos");
+		facturar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MasVendidos ms = new MasVendidos();
+				ms.setModal(true);
+				ms.setVisible(true);
+			}
+		});
 		facturar.setFont(new Font("Segoe UI", Font.PLAIN, 17));
 		Ventamn.add(facturar);
 		getContentPane().setLayout(null);
@@ -225,7 +247,7 @@ public class Principal extends JFrame {
 		
 		JLabel Icono = new JLabel("");
 		Icono.setIcon(new ImageIcon(Principal.class.getResource("/media/icon.png")));
-		Icono.setBounds(439, 13, 414, 374);
+		Icono.setBounds(188, 25, 414, 374);
 		panel_2.add(Icono);
 	}
 }

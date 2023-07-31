@@ -34,39 +34,43 @@ public class RegistrarCombo extends JDialog {
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
         componentesComboBoxModel = new DefaultComboBoxModel<>();
-        componentesComboBoxModel.addAll(Tienda.getInstance().getComponentes());
+        for (Componente componente : Tienda.getInstance().getComponentes()) {
+            componentesComboBoxModel.addElement(componente);
+        }
         componentesListModel = new DefaultListModel<>();
 
         JPanel panel = new JPanel();
+        panel.setBackground(Color.WHITE);
         panel.setBounds(0, 0, 895, 454);
         contentPanel.add(panel);
         panel.setLayout(null);
 
-        JLabel label = new JLabel("CÃ³digo:");
-        label.setBounds(83, 146, 56, 19);
+        JLabel label = new JLabel("Código:");
+        label.setBounds(40, 88, 56, 19);
         label.setFont(new Font("Tahoma", Font.BOLD, 15));
         panel.add(label);
 
         txtcodigo = new JTextField();
         txtcodigo.setEnabled(false);
         txtcodigo.setText("CMB00_" + Tienda.getInstance().getGenerarcodcomb());
-        txtcodigo.setBounds(165, 145, 180, 22);
+        txtcodigo.setBounds(108, 87, 194, 22);
         txtcodigo.setColumns(10);
         panel.add(txtcodigo);
 
         JLabel label_3 = new JLabel("Componentes:");
-        label_3.setBounds(83, 200, 105, 19);
+        label_3.setBounds(40, 132, 105, 19);
         label_3.setFont(new Font("Tahoma", Font.BOLD, 15));
         panel.add(label_3);
 
         JComboBox<Componente> comboBox = new JComboBox<>();
         comboBox.setModel(componentesComboBoxModel);
-        comboBox.setBounds(200, 199, 145, 22);
+        comboBox.setBounds(157, 131, 145, 22);
         panel.add(comboBox);
 
         JList<Componente> list = new JList<>();
+        list.setBackground(SystemColor.menu);
         list.setModel(componentesListModel);
-        list.setBounds(370, 90, 280, 250);
+        list.setBounds(40, 217, 349, 161);
         panel.add(list);
 
         JButton button = new JButton("Agregar");
@@ -76,8 +80,18 @@ public class RegistrarCombo extends JDialog {
                 componentesListModel.addElement(componenteSeleccionado);
             }
         });
-        button.setBounds(266, 262, 79, 25);
+        button.setBounds(292, 179, 97, 25);
         panel.add(button);
+        
+        JPanel panel_1 = new JPanel();
+        panel_1.setBounds(434, 0, 461, 454);
+        panel.add(panel_1);
+        panel_1.setLayout(null);
+        
+        JLabel lblNewLabel = new JLabel("New label");
+        lblNewLabel.setIcon(new ImageIcon(RegistrarCombo.class.getResource("/media/icon.png")));
+        lblNewLabel.setBounds(0, 0, 461, 454);
+        panel_1.add(lblNewLabel);
 
         JPanel buttonPane = new JPanel();
         buttonPane.setBackground(Color.WHITE);
@@ -85,6 +99,8 @@ public class RegistrarCombo extends JDialog {
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
         JButton btnRegistrar = new JButton("Registrar");
+        btnRegistrar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
+        btnRegistrar.setBackground(SystemColor.control);
         btnRegistrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String codigo = txtcodigo.getText();
@@ -110,6 +126,8 @@ public class RegistrarCombo extends JDialog {
         getRootPane().setDefaultButton(btnRegistrar);
 
         JButton btnCancelar = new JButton("Cancelar");
+        btnCancelar.setBackground(SystemColor.control);
+        btnCancelar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
         btnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -120,7 +138,7 @@ public class RegistrarCombo extends JDialog {
     }
 
     private void clean() {
-        txtcodigo.setText("CMB00_" + Tienda.getInstance().getGenerarcodcomb());
+        txtcodigo.setText("CMB00_"+Tienda.getInstance().getGenerarcodcomb());
         componentesListModel.clear();
     }
 }

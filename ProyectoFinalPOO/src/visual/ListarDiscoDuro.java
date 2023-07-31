@@ -24,6 +24,8 @@ import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class ListarDiscoDuro extends JDialog {
 
@@ -45,6 +47,7 @@ public class ListarDiscoDuro extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListarDiscoDuro(Tienda tienda) {
+		setBackground(SystemColor.window);
 		this.mitienda = tienda;
 		setResizable(false);
 		setTitle("Listado de discos duros");
@@ -89,11 +92,14 @@ public class ListarDiscoDuro extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(SystemColor.desktop);
 			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnmodificar = new JButton("Modificar");
+				btnmodificar.setBackground(SystemColor.control);
+				btnmodificar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
 				btnmodificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {	
 					}
@@ -105,6 +111,8 @@ public class ListarDiscoDuro extends JDialog {
 			}
 			{
 				btneliminar = new JButton("Eliminar");
+				btneliminar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
+				btneliminar.setBackground(SystemColor.control);
 				btneliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 					}
@@ -114,6 +122,8 @@ public class ListarDiscoDuro extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
+				btnCancelar.setBackground(SystemColor.control);
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

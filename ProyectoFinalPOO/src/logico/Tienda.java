@@ -105,7 +105,6 @@ public class Tienda {
 	public void agregarCliente(Cliente cliente) {
         misclientes.add(cliente);
         cantClientes++;
-        generarcodcli++;
     }
 
     public void agregarFactura(Factura nuevaFactura) {
@@ -114,8 +113,8 @@ public class Tienda {
 
     public void agregarCombo(Combo nuevoCombo) {
         misCombos.add(nuevoCombo);
-        generarcodcomb++;
         cantCombo++;
+        generarcodcomb++;
     }
 
     public void verFacturas() {
@@ -164,6 +163,24 @@ public class Tienda {
             }
         }
         return -1; 
+    }
+    private int indexBycodigoCombo(String codigo) {
+        misCombos = Tienda.getInstance().getMisCombos();
+        for (int i = 0; i < misCombos.size(); i++) {
+            Combo comb = misCombos.get(i);
+            if (comb.getIdCombo().equalsIgnoreCase(codigo)) {
+                return i;
+            }
+        }
+        return -1; 
+    }
+    public void eliminarCombo(String identificador) {
+        misCombos = Tienda.getInstance().getMisCombos();
+        int index = indexBycodigoCombo(identificador);
+        if (index != -1) {
+            componentes.remove(index);
+            cantCombo--;
+        }
     }
 
     public void eliminarComponente(String identificador) {

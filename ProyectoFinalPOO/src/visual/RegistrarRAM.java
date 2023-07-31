@@ -81,74 +81,74 @@ public class RegistrarRAM extends JDialog {
 			
 			JLabel lblNewLabel_1 = new JLabel("Codigo:");
 			lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-			lblNewLabel_1.setBounds(28, 52, 78, 19);
+			lblNewLabel_1.setBounds(28, 101, 78, 19);
 			panel.add(lblNewLabel_1);
 			
 			lblCantidadMemoria = new JLabel("Cantidad memoria:");
 			lblCantidadMemoria.setFont(new Font("Tahoma", Font.BOLD, 15));
-			lblCantidadMemoria.setBounds(28, 196, 156, 19);
+			lblCantidadMemoria.setBounds(28, 244, 156, 19);
 			panel.add(lblCantidadMemoria);
 			
 			txtcodigo = new JTextField();
 			txtcodigo.setText("RM00_"+Tienda.getInstance().getGenerarcodcli());
 			txtcodigo.setEditable(false);
-			txtcodigo.setBounds(118, 51, 254, 22);
+			txtcodigo.setBounds(118, 100, 254, 22);
 			panel.add(txtcodigo);
 			txtcodigo.setColumns(10);
 			
 			lblNombre = new JLabel("Precio:");
 			lblNombre.setFont(new Font("Tahoma", Font.BOLD, 15));
-			lblNombre.setBounds(28, 84, 78, 19);
+			lblNombre.setBounds(28, 139, 78, 19);
 			panel.add(lblNombre);
 			
 			txtmarca = new JTextField();
-			txtmarca.setBounds(118, 159, 254, 22);
+			txtmarca.setBounds(118, 205, 254, 22);
 			panel.add(txtmarca);
 			txtmarca.setColumns(10);
 			
 			JLabel label2 = new JLabel("Existencia: ");
 			label2.setFont(new Font("Tahoma", Font.BOLD, 15));
-			label2.setBounds(28, 116, 87, 19);
+			label2.setBounds(28, 171, 87, 19);
 			panel.add(label2);
 			
 			txtprecio = new JTextField();
-			txtprecio.setBounds(118, 86, 254, 22);
+			txtprecio.setBounds(118, 135, 254, 22);
 			panel.add(txtprecio);
 			txtprecio.setColumns(10);
 			
 			spncantEx = new JSpinner();
 			spncantEx.setModel(new SpinnerNumberModel(new Integer(1), null, null, new Integer(1)));
-			spncantEx.setBounds(118, 116, 30, 22);
+			spncantEx.setBounds(118, 170, 30, 22);
 			panel.add(spncantEx);
 			
 			JLabel lblNumSerie = new JLabel("Num. Serie:");
 			lblNumSerie.setFont(new Font("Tahoma", Font.BOLD, 15));
-			lblNumSerie.setBounds(168, 118, 95, 19);
+			lblNumSerie.setBounds(171, 173, 95, 19);
 			panel.add(lblNumSerie);
 			
 			txtNumSerie = new JTextField();
-			txtNumSerie.setBounds(266, 115, 106, 22);
+			txtNumSerie.setBounds(266, 170, 106, 22);
 			panel.add(txtNumSerie);
 			txtNumSerie.setColumns(10);
 			
 			JLabel lblMarca = new JLabel("Marca:");
 			lblMarca.setFont(new Font("Tahoma", Font.BOLD, 15));
-			lblMarca.setBounds(28, 160, 87, 19);
+			lblMarca.setBounds(28, 206, 87, 19);
 			panel.add(lblMarca);
 			
 			txtcantmemoria = new JTextField();
-			txtcantmemoria.setBounds(182, 195, 190, 22);
+			txtcantmemoria.setBounds(182, 243, 190, 22);
 			panel.add(txtcantmemoria);
 			txtcantmemoria.setColumns(10);
 			
 			JLabel lblTipoDeConexion = new JLabel("Tipo:");
 			lblTipoDeConexion.setFont(new Font("Tahoma", Font.BOLD, 15));
-			lblTipoDeConexion.setBounds(28, 246, 141, 19);
+			lblTipoDeConexion.setBounds(28, 279, 141, 19);
 			panel.add(lblTipoDeConexion);
 			
 			cbxTipoconx = new JComboBox();
 			cbxTipoconx.setModel(new DefaultComboBoxModel(new String[] {"<Selecciona:>", "DDR", "DDR-2", "DDR-3"}));
-			cbxTipoconx.setBounds(118, 245, 254, 22);
+			cbxTipoconx.setBounds(118, 278, 254, 22);
 			panel.add(cbxTipoconx);
 		}
 		{
@@ -158,6 +158,8 @@ public class RegistrarRAM extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
                 JButton btnaceptar = new JButton("");
+                btnaceptar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
+                btnaceptar.setBackground(SystemColor.control);
                 if(micomp==null){
                     btnaceptar.setText("Registrar");
                 }else{
@@ -191,6 +193,8 @@ public class RegistrarRAM extends JDialog {
             }
 			{
 				cancelarbtn = new JButton("Cancelar");
+				cancelarbtn.setBackground(SystemColor.control);
+				cancelarbtn.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
 				cancelarbtn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
