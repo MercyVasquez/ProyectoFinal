@@ -105,6 +105,7 @@ public class MasVendidos extends JDialog {
 						repaint();
 					}
 				});
+				
 				Actualizarbtn.setForeground(Color.BLACK);
 				Actualizarbtn.setBackground(SystemColor.control);
 				Actualizarbtn.setActionCommand("OK");
