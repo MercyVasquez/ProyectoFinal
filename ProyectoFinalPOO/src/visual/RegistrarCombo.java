@@ -10,12 +10,13 @@ import logico.Tienda;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class RegistrarCombo extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
     private DefaultComboBoxModel<Componente> componentesComboBoxModel;
-    private DefaultComboBoxModel<Componente> componentesListModel;
+    private DefaultListModel<Componente> componentesListModel;
     private Combo combo;
     private JTextField txtcodigo;
 
@@ -34,39 +35,47 @@ public class RegistrarCombo extends JDialog {
         contentPanel.setLayout(null);
         componentesComboBoxModel = new DefaultComboBoxModel<>();
         componentesComboBoxModel.addAll(Tienda.getInstance().getComponentes());
-        componentesListModel = new DefaultComboBoxModel<>();
-        
+        componentesListModel = new DefaultListModel<>();
+
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 895, 454);
         contentPanel.add(panel);
         panel.setLayout(null);
-        
-        JLabel label = new JLabel("C\u00F3digo:");
+
+        JLabel label = new JLabel("Código:");
         label.setBounds(83, 146, 56, 19);
         label.setFont(new Font("Tahoma", Font.BOLD, 15));
         panel.add(label);
-        
+
         txtcodigo = new JTextField();
         txtcodigo.setEnabled(false);
-        txtcodigo.setText("CMB00_"+Tienda.getInstance().getGenerarcodcomb());
+        txtcodigo.setText("CMB00_" + Tienda.getInstance().getGenerarcodcomb());
         txtcodigo.setBounds(165, 145, 180, 22);
         txtcodigo.setColumns(10);
         panel.add(txtcodigo);
-        
+
         JLabel label_3 = new JLabel("Componentes:");
         label_3.setBounds(83, 200, 105, 19);
         label_3.setFont(new Font("Tahoma", Font.BOLD, 15));
         panel.add(label_3);
-        
-        JComboBox<Componente> comboBox = new JComboBox<Componente>();
+
+        JComboBox<Componente> comboBox = new JComboBox<>();
+        comboBox.setModel(componentesComboBoxModel);
         comboBox.setBounds(200, 199, 145, 22);
         panel.add(comboBox);
-        
-        JList<Componente> list = new JList<Componente>();
-        list.setBounds(-34, 221, 0, 0);
+
+        JList<Componente> list = new JList<>();
+        list.setModel(componentesListModel);
+        list.setBounds(370, 90, 280, 250);
         panel.add(list);
-        
+
         JButton button = new JButton("Agregar");
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Componente componenteSeleccionado = (Componente) comboBox.getSelectedItem();
+                componentesListModel.addElement(componenteSeleccionado);
+            }
+        });
         button.setBounds(266, 262, 79, 25);
         panel.add(button);
 
@@ -79,11 +88,14 @@ public class RegistrarCombo extends JDialog {
         btnRegistrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String codigo = txtcodigo.getText();
-                DefaultListModel<Componente> componentes = (DefaultListModel<Componente>) listComponentes.getModel();
+                ArrayList<Componente> componentes = new ArrayList<>();
+                for (int i = 0; i < componentesListModel.size(); i++) {
+                    Componente componente = componentesListModel.getElementAt(i);
+                    componentes.add(componente);
+                }
 
                 combo = new Combo(codigo);
-                for (int i = 0; i < componentes.getSize(); i++) {
-                    Componente componente = componentes.getElementAt(i);
+                for (Componente componente : componentes) {
                     combo.agregarComponente(componente);
                 }
                 Tienda.getInstance().agregarCombo(combo);
@@ -108,9 +120,7 @@ public class RegistrarCombo extends JDialog {
     }
 
     private void clean() {
-        codigotxt.setText("");
-        nombretxt.setText("");
-        preciotxt.setText("");
+        txtcodigo.setText("CMB00_" + Tienda.getInstance().getGenerarcodcomb());
         componentesListModel.clear();
     }
 }
