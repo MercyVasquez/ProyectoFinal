@@ -125,7 +125,7 @@ public class RegistrarCliente extends JDialog {
                     btnaceptar.setText("Registrar");
                 }else{
                     btnaceptar.setText("Modificar");
-                }
+                } 
                 btnaceptar.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         if(micliente==null){
