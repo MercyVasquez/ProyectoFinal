@@ -141,7 +141,7 @@ public class RegistrarCliente extends JDialog {
                             ListarCliente.loadCliente();
                             dispose();
                         }
-                    } 
+                    }
 
 
                 });
