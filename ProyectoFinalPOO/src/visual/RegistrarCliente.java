@@ -25,8 +25,6 @@ import java.awt.event.ActionEvent;
 public class RegistrarCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JButton eliminarbtn;
-	private JButton modificarbtn;
 	private JButton cancelarbtn;
 	private JTextField codigotxt;
 	private JLabel lblDireccion;
@@ -36,7 +34,6 @@ public class RegistrarCliente extends JDialog {
 	private JTextField telefonotxt;
 	private Tienda mitienda = null;
 	private Cliente micliente = null;
-	private JButton Registrarbtn;
 	private JTextArea direcciontxt;
 
 	/**
@@ -85,7 +82,7 @@ public class RegistrarCliente extends JDialog {
 			panel.add(lblDireccion);
 			
 			codigotxt = new JTextField();
-			codigotxt.setText("CL00_"+Tienda.getInstance().getGgeneraridcli());
+			codigotxt.setText("CL00_"+Tienda.getInstance().getGenerarcodcli());
 			codigotxt.setEditable(false);
 			codigotxt.setBounds(123, 85, 254, 22);
 			panel.add(codigotxt);
@@ -122,73 +119,55 @@ public class RegistrarCliente extends JDialog {
 			buttonPane.setBackground(Color.WHITE);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			
-			Registrarbtn = new JButton("Registrar");
-			Registrarbtn.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Cliente aux = new Cliente(codigotxt.getText(),nombretxt.getText(),direcciontxt.getText(),telefonotxt.getText());
-					mitienda.agregarCliente(aux);
-					JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Notificación", JOptionPane.INFORMATION_MESSAGE);
-                    clean();
-				}
-			});
-			buttonPane.add(Registrarbtn);
 			{
-				modificarbtn = new JButton("Modificar");
-				modificarbtn.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						micliente.setNombre(nombretxt.getText());
-						micliente.setDireccion(direcciontxt.getText());
-						micliente.setTelefono(telefonotxt.getText());
-						mitienda.modificarCliente(micliente);
-						ListarCliente.loadCliente();
-						dispose();
-						//Solo falta eliminar so, manana
-					}
-				});
-				if(micliente==null) {
-					modificarbtn.setEnabled(false);
-				}else {
-					modificarbtn.setEnabled(true);
-				}
-				modificarbtn.setActionCommand("OK");
-				buttonPane.add(modificarbtn);
-				getRootPane().setDefaultButton(modificarbtn);
-			}
-			{
-			if(micliente==null) {
-				eliminarbtn.setEnabled(false);
-			}else {
-				eliminarbtn.setEnabled(true);
-			}
-			eliminarbtn = new JButton("Eliminar");
-			eliminarbtn.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					micliente.setNombre(nombretxt.getText()); //creo que solo necesita el codigo cliente
-					micliente.setDireccion(direcciontxt.getText());
-					micliente.setTelefono(telefonotxt.getText());
-					mitienda.eliminarCliente(codigotxt.getText());;
-					ListarCliente.loadCliente();
-					dispose();
-				}
-			});
-			eliminarbtn.setEnabled(false);
-			buttonPane.add(eliminarbtn);
-			}
+                JButton btnaceptar = new JButton("");
+                if(micliente==null){
+                    btnaceptar.setText("Registrar");
+                }else{
+                    btnaceptar.setText("Modificar");
+                }
+                btnaceptar.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if(micliente==null){
+                        Cliente cli = new Cliente(codigotxt.getText(), nombretxt.getText(),direcciontxt.getText(),telefonotxt.getText());
+                        Tienda.getInstance().agregarCliente(cli);;
+                        JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
+                        Clean();
+                        }else{
+                            micliente.setNombre(nombretxt.getText());
+                            micliente.setDireccion(direcciontxt.getText());
+                            micliente.setTelefono(telefonotxt.getText());
+                            mitienda.modificarCliente(micliente);;
+                            ListarCliente.loadCliente();
+                            dispose();
+                        }
+                    }
+
+
+                });
+                btnaceptar.setActionCommand("OK");
+                buttonPane.add(btnaceptar);
+                getRootPane().setDefaultButton(btnaceptar);
+            }
 			{
 				cancelarbtn = new JButton("Cancelar");
+				cancelarbtn.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelarbtn.setActionCommand("Cancel");
 				buttonPane.add(cancelarbtn);
 			}
+			loadCliente();
 		}
 	}
-	private void clean() {
-        nombretxt.setText("");
-        direcciontxt.setText("");
-        telefonotxt.setText("");
-        codigotxt.setText("CL00_)-"+mitienda.getGgeneraridcli());
-
-    }
+	private void Clean() {
+		codigotxt.setText("CL00_"+mitienda.getInstance().getGenerarcodcli());
+		nombretxt.setText("");
+		direcciontxt.setText("");
+		telefonotxt.setText("");
+	}
 	private void loadCliente() {
         if(micliente!=null){
             codigotxt.setText(micliente.getId());
