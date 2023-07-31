@@ -67,7 +67,7 @@ public class ListarCliente extends JDialog {
 				{
 					
 					model = new DefaultTableModel();
-					String[] header = {"Código","Nombre","Direccion","Telefono"};
+					String[] header = {"Cï¿½digo","Nombre","Direccion","Telefono"};
 					model.setColumnIdentifiers(header);
 					table = new JTable(model);
 					table.addMouseListener(new MouseAdapter() {
@@ -120,7 +120,7 @@ public class ListarCliente extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						if(!id.equals("")){
 							   Cliente aux = tienda.buscarCliente(id);
-							   int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el Cliente: " + aux.getNombre(),"Información",JOptionPane.WARNING_MESSAGE);
+							   int option = JOptionPane.showConfirmDialog(null, "Estï¿½ seguro que desea eliminar el Cliente: " + aux.getNombre(),"Informaciï¿½n",JOptionPane.WARNING_MESSAGE);
 								  if(option == JOptionPane.OK_OPTION){
 									tienda.eliminarCliente(id);
 									loadCliente(0);

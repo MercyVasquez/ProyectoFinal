@@ -134,7 +134,7 @@ public class RegistrarCliente extends JDialog {
                         if(micliente==null){
                         Cliente cli = new Cliente(codigotxt.getText(), nombretxt.getText(),direcciontxt.getText(),telefonotxt.getText());
                         Tienda.getInstance().agregarCliente(cli);
-                        JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Operaciï¿½n satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
                         Clean();
                         }else{
                             micliente.setNombre(nombretxt.getText());
