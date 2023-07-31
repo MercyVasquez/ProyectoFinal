@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class MasVendidos extends JDialog {
 
@@ -98,26 +99,28 @@ public class MasVendidos extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				Actualizarbtn = new JButton("Actualizar");
+				Actualizarbtn.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
 				Actualizarbtn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						repaint();
 					}
 				});
-				Actualizarbtn.setForeground(Color.WHITE);
-				Actualizarbtn.setBackground(Color.GRAY);
+				Actualizarbtn.setForeground(Color.BLACK);
+				Actualizarbtn.setBackground(SystemColor.control);
 				Actualizarbtn.setActionCommand("OK");
 				buttonPane.add(Actualizarbtn);
 				getRootPane().setDefaultButton(Actualizarbtn);
 			}
 			{
-				cancelButton = new JButton("Cancel");
+				cancelButton = new JButton("Cancelar");
+				cancelButton.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});
-				cancelButton.setForeground(Color.WHITE);
-				cancelButton.setBackground(Color.GRAY);
+				cancelButton.setForeground(Color.BLACK);
+				cancelButton.setBackground(SystemColor.control);
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
