@@ -134,6 +134,12 @@ public class RegistrarCliente extends JDialog {
                                     JOptionPane.INFORMATION_MESSAGE);
                             Clean();
                         } else {
+                        if(micliente==null){
+                        Cliente cli = new Cliente(codigotxt.getText(), nombretxt.getText(),direcciontxt.getText(),telefonotxt.getText());
+                        Tienda.getInstance().agregarCliente(cli);
+                        JOptionPane.showMessageDialog(null, "Operaciï¿½n satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
+                        Clean();
+                        }else{
                             micliente.setNombre(nombretxt.getText());
                             micliente.setDireccion(direcciontxt.getText());
                             micliente.setTelefono(telefonotxt.getText());
@@ -141,6 +147,7 @@ public class RegistrarCliente extends JDialog {
                             JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Modificado",
                                     JOptionPane.INFORMATION_MESSAGE);
                             dispose();
+                        }
                         }
                     }
                 });
