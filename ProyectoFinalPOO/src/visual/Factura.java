@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import logico.Cliente;
 import logico.Combo;
 import logico.Componente;
+import logico.Tienda;
 
 public class Factura extends JDialog {
 
@@ -65,18 +66,11 @@ public class Factura extends JDialog {
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(new BorderLayout(0, 0));
 
-        JPanel panel = new JPanel();
-        panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        contentPanel.add(panel, BorderLayout.CENTER);
-        panel.setLayout(new BorderLayout(0, 0));
-
         model = new DefaultTableModel();
         String[] header = { "ID", "Descripción", "Precio" };
         model.setColumnIdentifiers(header);
         table = new JTable(model);
-
-        JScrollPane scrollPane = new JScrollPane(table);
-        panel.add(scrollPane, BorderLayout.CENTER);
+        contentPanel.add(new JScrollPane(table), BorderLayout.CENTER);
 
         JPanel panel_1 = new JPanel();
         panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -120,8 +114,7 @@ public class Factura extends JDialog {
 
     private void loadData() {
         if (clienteSeleccionado != null) {
-            String[] row = { clienteSeleccionado.getId(), clienteSeleccionado.getNombre(),
-                    String.valueOf(clienteSeleccionado.getDireccion()), String.valueOf(clienteSeleccionado.getTelefono()) };
+            String[] row = { clienteSeleccionado.getId(), clienteSeleccionado.getNombre(), "" };
             model.addRow(row);
         }
 
