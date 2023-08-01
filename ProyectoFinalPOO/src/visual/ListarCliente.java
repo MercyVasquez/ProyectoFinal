@@ -58,7 +58,6 @@ public class ListarCliente extends JDialog {
                 scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
                 panel.add(scrollPane, BorderLayout.CENTER);
                 {
-
                     model = new DefaultTableModel();
                     String[] header = {"Código", "Nombre", "Direccion", "Telefono"};
                     model.setColumnIdentifiers(header);
