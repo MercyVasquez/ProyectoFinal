@@ -10,6 +10,7 @@ public class Tienda {
 	private static int generarcodcli=1;
 	private static int generarcodcomp=1;
 	private static int generarcodcomb=1;
+	private static int generarcodFac=1;
     public static int cantComp;
     public static int cantCombo;
     public static int cantClientes;
@@ -100,6 +101,13 @@ public class Tienda {
 	public static void setGenerarcodcomb(int generarcodcomb) {
 		Tienda.generarcodcomb = generarcodcomb;
 	}
+	public static int getGenerarcodFac() {
+		return generarcodFac;
+	}
+
+	public static void setGenerarcodFac(int generarcodFac) {
+		Tienda.generarcodFac = generarcodFac;
+	}
 	
 	//metodos
 	public void agregarCliente(Cliente cliente) {
@@ -110,6 +118,7 @@ public class Tienda {
 
     public void agregarFactura(Factura nuevaFactura) {
         factura.add(nuevaFactura);
+        generarcodFac++;
     }
 
     public void agregarCombo(Combo nuevoCombo) {

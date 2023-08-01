@@ -69,10 +69,10 @@ public class RegistrarCombo extends JDialog {
         label_3.setFont(new Font("Tahoma", Font.BOLD, 15));
         panel.add(label_3);
 
-        JComboBox<Componente> comboBox = new JComboBox<>();
-        comboBox.setModel(componentesComboBoxModel);
-        comboBox.setBounds(157, 131, 145, 22);
-        panel.add(comboBox);
+        JComboBox<Componente> cbxComp = new JComboBox<>();
+        cbxComp.setModel(componentesComboBoxModel);
+        cbxComp.setBounds(157, 131, 145, 22);
+        panel.add(cbxComp);
 
         JList<Componente> list = new JList<>();
         list.setBackground(SystemColor.menu);
@@ -83,7 +83,7 @@ public class RegistrarCombo extends JDialog {
         JButton button = new JButton("Agregar");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Componente componenteSeleccionado = (Componente) comboBox.getSelectedItem();
+                Componente componenteSeleccionado = (Componente) cbxComp.getSelectedItem();
                 componentesListModel.addElement(componenteSeleccionado);
             }
         });

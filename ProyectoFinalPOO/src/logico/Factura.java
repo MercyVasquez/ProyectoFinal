@@ -80,7 +80,7 @@ public class Factura {
 			total += producto.getPrecio();
 			producto.disminuirCantidad();
 		}
-		total += total * (impuesto);
+		total += total;
 		return total;
 	}
 	public void agregarComponenteFac(Componente componente, int cantidad) {

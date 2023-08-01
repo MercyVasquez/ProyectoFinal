@@ -79,5 +79,9 @@ public class Combo {
 	public boolean revisarExistenciaCombo(String IDCombo) {
 		return (idCombo == IDCombo) ? true : false;
 	}
-  
+	
+    @Override
+    public String toString() {
+        return getIdCombo();
+    }
 }

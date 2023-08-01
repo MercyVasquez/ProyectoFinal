@@ -212,13 +212,20 @@ public class Principal extends JFrame {
 		menuBar.add(Ventamn);
 		
 		JMenuItem masvendido = new JMenuItem("Facturar");
+		masvendido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Facturar fac = new Facturar(tienda);
+				fac.setModal(true);
+				fac.setVisible(true);
+			}
+		});
 		masvendido.setFont(new Font("Segoe UI", Font.PLAIN, 17));
 		Ventamn.add(masvendido);
 		
 		JMenuItem facturar = new JMenuItem("Mas vendidos");
 		facturar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MasVendidos ms = new MasVendidos();
+				MasVendidos ms = new MasVendidos(tienda);
 				ms.setModal(true);
 				ms.setVisible(true);
 			}

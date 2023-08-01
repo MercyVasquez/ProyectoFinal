@@ -30,25 +30,17 @@ public class MasVendidos extends JDialog {
 	private JTextField masvendidotxt;
 	private JButton Actualizarbtn;
 	private JButton cancelButton;
+    private Tienda tienda;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			MasVendidos dialog = new MasVendidos();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
 	 */
-	public MasVendidos() {
-		Tienda tienda = new Tienda();
+	public MasVendidos(Tienda tienda) {
+		this.tienda = tienda;
 		setBackground(Color.GRAY);
 		setTitle("Productos mas vendidos");
 		setResizable(false);
