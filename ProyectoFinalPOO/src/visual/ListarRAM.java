@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 import logico.Componente;
 import logico.MemoriaRAM;
+import logico.TarjetaMadre;
 import logico.Tienda;
 
 import javax.swing.JScrollPane;
@@ -49,7 +50,7 @@ public class ListarRAM extends JDialog {
 	public ListarRAM(Tienda tienda) {
 		this.mitienda = tienda;
 		setResizable(false);
-		setTitle("Listado de discos duros");
+		setTitle("Listado de Memorias RAM");
 		setBounds(100, 100, 901, 524);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -100,6 +101,20 @@ public class ListarRAM extends JDialog {
 				btnmodificar.setBackground(SystemColor.control);
 				btnmodificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {	
+						if (!id.equals("")) {
+						    Componente aux = tienda.buscarComp(id);
+						    if(aux!=null) {
+						    if (aux instanceof MemoriaRAM) {
+						    	MemoriaRAM MemoriaRAMAux = (MemoriaRAM) aux;
+						        RegistrarRAM regcli = new RegistrarRAM(tienda, MemoriaRAMAux);
+						        regcli.setModal(true);
+						        regcli.setVisible(true);
+						    }
+						    }else {
+                	            JOptionPane.showMessageDialog(null, "El MemoriaRAM no existe en la lista.", "Error",
+                	                    JOptionPane.ERROR_MESSAGE);
+                	        }
+						} 
 					}
 				});
 				btnmodificar.setEnabled(false);
@@ -113,6 +128,23 @@ public class ListarRAM extends JDialog {
 				btneliminar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
 				btneliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+	                       if (!id.equals("")) {
+	                            Componente aux = tienda.buscarComp(id);
+	                            if (aux != null) {
+	                                int confirm = JOptionPane.showConfirmDialog(null,
+	                                        "Está seguro que desea eliminar la Memoria RAM: " + aux.getIdcomp(), "Confirmar",
+	                                        JOptionPane.YES_NO_OPTION);
+	                                if (confirm == JOptionPane.YES_OPTION) {
+	                                    tienda.eliminarComponente(id);
+	                                    loadram(0);
+	                                    btneliminar.setEnabled(false);
+	                                    btnmodificar.setEnabled(false);
+	                                }
+	                            }
+	                        }else {
+	            	            JOptionPane.showMessageDialog(null, "La Memoria RAM no existe en la lista.", "Error",
+	            	                    JOptionPane.ERROR_MESSAGE);
+	            	        }
 					}
 				});
 				btneliminar.setEnabled(false);
@@ -131,10 +163,10 @@ public class ListarRAM extends JDialog {
 				buttonPane.add(btnCancelar);
 			}
 		}
-		loadDiscoD(0);
+		loadram(0);
 	}
 
-	public static void loadDiscoD(int index) {
+	public static void loadram(int index) {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
 		if(index == 0){

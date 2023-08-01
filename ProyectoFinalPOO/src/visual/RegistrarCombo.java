@@ -3,6 +3,7 @@ package visual;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import logico.Cliente;
 import logico.Combo;
 import logico.Componente;
 import logico.Tienda;
@@ -19,11 +20,17 @@ public class RegistrarCombo extends JDialog {
     private DefaultListModel<Componente> componentesListModel;
     private Combo combo;
     private JTextField txtcodigo;
+    private Tienda mitienda = null;
+    private Combo micombo = null;
+    private JButton btnRegistrar;
 
     /**
      * Create the dialog.
      */
-    public RegistrarCombo() {
+    public RegistrarCombo(Tienda tienda, Combo combo) {
+        this.mitienda = tienda;
+        this.micombo = combo;
+        setTitle("Registrar combo");
         setResizable(false);
         setTitle("Registrar Combo");
         setBounds(100, 100, 901, 524);
@@ -34,7 +41,7 @@ public class RegistrarCombo extends JDialog {
         getContentPane().add(contentPanel, BorderLayout.CENTER);
         contentPanel.setLayout(null);
         componentesComboBoxModel = new DefaultComboBoxModel<>();
-        for (Componente componente : Tienda.getInstance().getComponentes()) {
+        for (Componente componente : mitienda.getComponentes()) {
             componentesComboBoxModel.addElement(componente);
         }
         componentesListModel = new DefaultListModel<>();
@@ -98,7 +105,7 @@ public class RegistrarCombo extends JDialog {
         buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
-        JButton btnRegistrar = new JButton("Registrar");
+        btnRegistrar = new JButton("Registrar");
         btnRegistrar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
         btnRegistrar.setBackground(SystemColor.control);
         btnRegistrar.addActionListener(new ActionListener() {
@@ -110,11 +117,11 @@ public class RegistrarCombo extends JDialog {
                     componentes.add(componente);
                 }
 
-                combo = new Combo(codigo);
+                micombo = new Combo(codigo);
                 for (Componente componente : componentes) {
-                    combo.agregarComponente(componente);
+                    micombo.agregarComponente(componente);
                 }
-                Tienda.getInstance().agregarCombo(combo);
+                mitienda.agregarCombo(micombo);
 
                 JOptionPane.showMessageDialog(null, "Combo registrado correctamente", "Registro Exitoso",
                         JOptionPane.INFORMATION_MESSAGE);

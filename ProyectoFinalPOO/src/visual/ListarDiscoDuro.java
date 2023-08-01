@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import logico.Cliente;
 import logico.Componente;
 import logico.DiscoDuro;
 import logico.Tienda;
@@ -102,6 +103,20 @@ public class ListarDiscoDuro extends JDialog {
 				btnmodificar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 13));
 				btnmodificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {	
+						if (!id.equals("")) {
+						    Componente aux = tienda.buscarComp(id);
+						    if(aux!=null) {
+						    if (aux instanceof DiscoDuro) {
+						        DiscoDuro discoDuroAux = (DiscoDuro) aux;
+						        RegistrarDiscoDuro regcli = new RegistrarDiscoDuro(tienda, discoDuroAux);
+						        regcli.setModal(true);
+						        regcli.setVisible(true);
+						    }
+						    }else {
+                	            JOptionPane.showMessageDialog(null, "El Disco Duro no existe en la lista.", "Error",
+                	                    JOptionPane.ERROR_MESSAGE);
+                	        }
+						}
 					}
 				});
 				btnmodificar.setEnabled(false);
@@ -115,6 +130,23 @@ public class ListarDiscoDuro extends JDialog {
 				btneliminar.setBackground(SystemColor.control);
 				btneliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+                        if (!id.equals("")) {
+                            Componente aux = tienda.buscarComp(id);
+                            if (aux != null) {
+                                int confirm = JOptionPane.showConfirmDialog(null,
+                                        "Está seguro que desea eliminar el Disco Duro: " + aux.getIdcomp(), "Confirmar",
+                                        JOptionPane.YES_NO_OPTION);
+                                if (confirm == JOptionPane.YES_OPTION) {
+                                    tienda.eliminarComponente(id);
+                                    loadDiscoD(0);
+                                    btneliminar.setEnabled(false);
+                                    btnmodificar.setEnabled(false);
+                                }
+                            }
+                        }else {
+            	            JOptionPane.showMessageDialog(null, "El Disco Duro no existe en la lista.", "Error",
+            	                    JOptionPane.ERROR_MESSAGE);
+            	        }
 					}
 				});
 				btneliminar.setEnabled(false);
@@ -140,7 +172,7 @@ public class ListarDiscoDuro extends JDialog {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
 		if(index == 0){
-			for (Componente comp : Tienda.getInstance().getComponentes()) {
+			for (Componente comp : mitienda.getComponentes()) {
 			    if (comp instanceof DiscoDuro) {
 			        DiscoDuro discoDuro = (DiscoDuro) comp;
 			        row[0] = discoDuro.getIdcomp();

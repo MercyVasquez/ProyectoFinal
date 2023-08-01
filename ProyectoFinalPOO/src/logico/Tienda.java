@@ -105,6 +105,7 @@ public class Tienda {
 	public void agregarCliente(Cliente cliente) {
         misclientes.add(cliente);
         cantClientes++;
+        generarcodcli++;
     }
 
     public void agregarFactura(Factura nuevaFactura) {
@@ -206,20 +207,35 @@ public class Tienda {
 	    }
 	}
 	public void eliminarCliente(String identificador) {
-	    misclientes = Tienda.getInstance().getMisclientes();
-	    int index = indexBycodigoCli(identificador);
-	    if (index != -1) {
-	        misclientes.remove(index);
+	    Cliente cliente = buscarCliente(identificador);
+	    if (cliente != null) {
+	        misclientes.remove(cliente);
 	        cantClientes--;
 	    }
 	}
 	public Cliente buscarCliente(String id) {
-	    Cliente aux = null;
+	    for (Cliente cliente : misclientes) { 
+	        if (cliente.getId().equalsIgnoreCase(id)) {
+	            return cliente;
+	        }
+	    }
+	    return null;
+	}
+	public Combo buscarCombo(String id) {
+	    for (Combo combo : misCombos) { 
+	        if (combo.getIdCombo().equalsIgnoreCase(id)) {
+	            return combo;
+	        }
+	    }
+	    return null;
+	}
+	public Componente buscarComp(String id) {
+	    Componente aux = null;
 	    boolean encontrado = false;
 	    int i = 0;
-	    while (!encontrado && i < misclientes.size()) {
-	        if (misclientes.get(i).getId().equalsIgnoreCase(id)) {
-	            aux = misclientes.get(i);
+	    while (!encontrado && i < componentes.size()) {
+	        if (componentes.get(i).getIdcomp().equalsIgnoreCase(id)) {
+	            aux = componentes.get(i);
 	            encontrado = true;
 	        }
 	        i++;

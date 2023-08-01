@@ -55,7 +55,7 @@ public class Principal extends JFrame {
 		setTitle("Tienda de componentes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 902, 524);
-		setLocationRelativeTo(null); //hola
+		setLocationRelativeTo(null); 
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setMargin(new Insets(0, 5, 0, 5));
@@ -161,7 +161,7 @@ public class Principal extends JFrame {
 		JMenuItem Listarcomb = new JMenuItem("Listar");
 		Listarcomb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListarCombo comb = new ListarCombo();
+				ListarCombo comb = new ListarCombo(tienda);
 				comb.setModal(true);
 				comb.setVisible(true);
 			}
@@ -172,7 +172,7 @@ public class Principal extends JFrame {
 		JMenuItem Registrarcomb = new JMenuItem("Registrar");
 		Registrarcomb.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistrarCombo regcomb = new RegistrarCombo();
+				RegistrarCombo regcomb = new RegistrarCombo(tienda,null);
 				regcomb.setModal(true);
 				regcomb.setVisible(true);
 			}

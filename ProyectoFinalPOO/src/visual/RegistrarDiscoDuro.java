@@ -59,7 +59,7 @@ public class RegistrarDiscoDuro extends JDialog {
 		if(micomp==null) {
 			setTitle("Registrar Disco Duro");
 		}else {
-			setTitle("Modificar: "+micomp.getIdcomp()); //que diablo tu hace
+			setTitle("Modificar: "+micomp.getIdcomp()); 
 		}
 		setBackground(Color.LIGHT_GRAY);
 		setResizable(false);
@@ -181,7 +181,7 @@ public class RegistrarDiscoDuro extends JDialog {
                     public void actionPerformed(ActionEvent e) {
                         if(micomp==null){
                         Componente comp = new DiscoDuro(txtcodigo.getText(),Double.parseDouble(txtprecio.getText()),(int)spncantEx.getValue(),txtNumSerie.getText(),txtmarca.getText(),txtmodelo.getText(),txtcapacidad.getText(),cbxTipoconx.getSelectedItem().toString());
-                        Tienda.getInstance().agregarComponente(comp);
+                        mitienda.agregarComponente(comp);
                         JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
                         Clean();
                         }else{

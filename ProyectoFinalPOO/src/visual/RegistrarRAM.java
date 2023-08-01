@@ -169,7 +169,7 @@ public class RegistrarRAM extends JDialog {
                     public void actionPerformed(ActionEvent e) {
                         if(micomp==null){
                         Componente comp = new MemoriaRAM(txtcodigo.getText(),Double.parseDouble(txtprecio.getText()),(int)spncantEx.getValue(),txtNumSerie.getText(),txtmarca.getText(),txtcantmemoria.getText(),cbxTipoconx.getSelectedItem().toString());
-                        Tienda.getInstance().agregarComponente(comp);
+                        mitienda.agregarComponente(comp);
                         JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
                         Clean();
                         }else{
@@ -180,7 +180,7 @@ public class RegistrarRAM extends JDialog {
                         	micomp.setMarca(txtmarca.getText());
                         	micomp.setCantMemoria(txtcantmemoria.getText());
                         	micomp.setTipoMemoria(cbxTipoconx.getSelectedItem().toString());
-                            ListarDiscoDuro.loadDiscoD(0);
+                            ListarRAM.loadram(0);
                             dispose();
                         }
                     }
@@ -203,7 +203,7 @@ public class RegistrarRAM extends JDialog {
 				cancelarbtn.setActionCommand("Cancel");
 				buttonPane.add(cancelarbtn);
 			}
-			loadDiscoD();
+			loadRAM();
 		}
 	}
 	private void Clean() {
@@ -215,7 +215,7 @@ public class RegistrarRAM extends JDialog {
     	txtcantmemoria.setText("");
     	cbxTipoconx.setSelectedIndex(0);
 	}
-	private void loadDiscoD() {
+	private void loadRAM() {
         if(micomp!=null){
     		txtcodigo.setText(micomp.getIdcomp());
     		txtprecio.setText(String.valueOf(micomp.getPrecio()));

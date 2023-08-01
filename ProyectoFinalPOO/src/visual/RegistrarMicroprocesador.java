@@ -57,7 +57,7 @@ public class RegistrarMicroprocesador extends JDialog {
 		this.mitienda = tienda;
 		this.micomp = comp;
 		if(micomp==null) {
-			setTitle("Registrar Memoria RAM");
+			setTitle("Registrar Microprocesador");
 		}else {
 			setTitle("Modificar: "+micomp.getIdcomp()); 
 		}
@@ -181,7 +181,7 @@ public class RegistrarMicroprocesador extends JDialog {
                     public void actionPerformed(ActionEvent e) {
                         if(micomp==null){
                         Componente comp = new Microprocesador(txtcodigo.getText(),Double.parseDouble(txtprecio.getText()),(int)spncantEx.getValue(),txtNumSerie.getText(),txtmarca.getText(),txtmodelo.getText(),cbxTipoconx.getSelectedItem().toString(),txtvel.getText());
-                        Tienda.getInstance().agregarComponente(comp);
+                        mitienda.agregarComponente(comp);
                         JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
                         Clean();
                         }else{
@@ -193,7 +193,7 @@ public class RegistrarMicroprocesador extends JDialog {
                         	micomp.setModelo(txtmodelo.getText());
                         	micomp.setTipoConexion(cbxTipoconx.getSelectedItem().toString());
                         	micomp.setVelocidadProcesamiento(txtvel.getText());
-                            ListarDiscoDuro.loadDiscoD(0);
+                            ListarMicroprocesador.loadMicro(0);
                             dispose();
                         }
                     }
@@ -216,7 +216,7 @@ public class RegistrarMicroprocesador extends JDialog {
 				cancelarbtn.setActionCommand("Cancel");
 				buttonPane.add(cancelarbtn);
 			}
-			loadDiscoD();
+			loadMicro();
 		}
 	}
 	private void Clean() {
@@ -229,7 +229,7 @@ public class RegistrarMicroprocesador extends JDialog {
     	cbxTipoconx.setSelectedIndex(0);
     	txtvel.setText("");
 	}
-	private void loadDiscoD() {
+	private void loadMicro() {
         if(micomp!=null){
     		txtcodigo.setText(micomp.getIdcomp());
     		txtprecio.setText(String.valueOf(micomp.getPrecio()));

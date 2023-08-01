@@ -59,7 +59,7 @@ public class RegistrarMotherboard extends JDialog {
 		this.mitienda = tienda;
 		this.micomp = comp;
 		if(micomp==null) {
-			setTitle("Registrar Memoria RAM");
+			setTitle("Registrar Motherboard");
 		}else {
 			setTitle("Modificar: "+micomp.getIdcomp()); 
 		}
@@ -193,7 +193,7 @@ public class RegistrarMotherboard extends JDialog {
                     public void actionPerformed(ActionEvent e) {
                         if(micomp==null){
                         Componente comp = new TarjetaMadre(txtcodigo.getText(),Double.parseDouble(txtprecio.getText()),(int)spncantEx.getValue(),txtNumSerie.getText(),txtmarca.getText(),txtmodelo.getText(),cbxTipoconx.getSelectedItem().toString(),cbxram.getSelectedItem().toString(),cbxconxcpu.getSelectedItem().toString());
-                        Tienda.getInstance().agregarComponente(comp);
+                        mitienda.agregarComponente(comp);
                         JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Registrado", JOptionPane.INFORMATION_MESSAGE);
                         Clean();
                         }else{
@@ -206,7 +206,7 @@ public class RegistrarMotherboard extends JDialog {
                         	micomp.setTipoConexion(cbxTipoconx.getSelectedItem().toString());
                         	micomp.setTipoRam(cbxram.getSelectedItem().toString());
                         	micomp.setConexionAceptada(cbxconxcpu.getSelectedItem().toString());
-                            ListarDiscoDuro.loadDiscoD(0);
+                            ListarMotherboard.loadMotherb(0);
                             dispose();
                         }
                     }
@@ -229,7 +229,7 @@ public class RegistrarMotherboard extends JDialog {
 				cancelarbtn.setActionCommand("Cancel");
 				buttonPane.add(cancelarbtn);
 			}
-			loadDiscoD();
+			loadmb();
 		}
 	}
 	private void Clean() {
@@ -243,7 +243,7 @@ public class RegistrarMotherboard extends JDialog {
     	cbxram.setSelectedIndex(0);
     	cbxconxcpu.setSelectedIndex(0);
 	}
-	private void loadDiscoD() {
+	private void loadmb() {
         if(micomp!=null){
     		txtcodigo.setText(micomp.getIdcomp());
     		txtprecio.setText(String.valueOf(micomp.getPrecio()));
